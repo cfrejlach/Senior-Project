@@ -1,0 +1,20 @@
+<meta name="viewport" content="width=device-width">
+
+<link rel = "stylesheet" href = "../CSS/navBarStyle.css">
+<title>PDF to Excel and More!</title>
+<div id = "app">
+  <div id = "instructions">
+    <h4>Instructions: </h4>
+    <p>Enter a pdf document and the excel sheet will be converted</p><br><br>
+  </div>
+  <div id = "submitPdf">
+    <label for = "pdf" id = "pdfLabel">Enter PDF that you want tables to be extracted from:</label><br>
+    <input type = "file" id = "pdf"><br><br>
+    <button id = "extract" @click = "openExcalibur">Extract tables</button>
+  </div>
+  <div id = "downloadXL">
+    <button id = "downloadXLButton" @click = "downloadSheets">Download {{numberOtables}} Excel Sheet(s)</button>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src = "../main.js"></script>

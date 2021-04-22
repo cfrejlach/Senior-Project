@@ -1,12 +1,12 @@
 import camelot
 import tkinter as tk
-import tabula
-import pdftables_api
+import pandas as pd
+import xlsxwriter
 from camelot import utils
 import easygui
 
 pdf = easygui.fileopenbox()
- 
+outname = input("pleas enter the name of the file thats outputted")
 #=================================Working Scan for Japan town door sched. ========================
   
 tables = camelot.read_pdf(pdf, flavor = 'lattice', shift_text = [' '], pages= '1-end', line_scale =110, joint_tol = 25, line_tol = 10)
@@ -63,29 +63,30 @@ while(flag == False):
     else: 
         print("INVALID ENTRY \n please type one of the following settings to update and get a better read: \n TABLE_AREA, LINE_SCALE, JOINT_TOL, LINE_TOL \n Type \"READY\" to perform another table read. Type \"DONE\" to output finished Excel file\n")
 
-print(tables[0].parsing_report['accuracy'])
-print(tables[0].df)
-x = len(tables)
-print(x) 
-for i in range(len(tables)):
-    z = str(i)
-    tables[i].to_excel('japanTownDoorSchedulee'+z+'.xlsx')
+# print(tables[0].parsing_report['accuracy'])
+# print(tables[0].df)
+# x = len(tables)
+# print(x) 
+# for i in range(len(tables)):
+#     z = str(i)
+#     tables[i].to_excel(outname +z+'.xlsx')
 
-#================================================= for ava arts door schedule 
-# file = "AvaArtsDoorSchedule.pdf"
+# #================================================= for ava arts door schedule 
+# file = "./pdfs/AVAArtsDoorSchedule.pdf"
    
 # tables = camelot.read_pdf(file, flavor = 'lattice', table_areas = ['212,2133,1745,1583','298,1570,1736,883','310,870,1762,300','303,300,1731,54','1765,245,3190,80'], split_text = True, shift_text = [' '], line_scale = 50, joint_tol = 50)
    
 # print(tables[0].parsing_report)
 # #print(tables[0].df)
 # plt = camelot.plot(tables[0], kind='grid').show()
-
 # tk.mainloop()
 # x = len(tables)
 # print(x) 
-# for i in range(len(tables)):
-#     z = str(i)
-#     tables[i].to_excel('AvaArtsDoorSchedule'+z+'.xlsx')
+# z= 0
+# for table in tables:
+#     z = z+1
+#     table.to_excel('AvaArtsDoorSchedule{}.xlsx'.format(z))
+
 
 
 #================================================= for The tillery door schedule 
